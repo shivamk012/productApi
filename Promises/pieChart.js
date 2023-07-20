@@ -10,7 +10,7 @@ const pieChartData = async(month) => {
             if(mp.has(element.category)){
                 mp.set(element.category , mp.get(element.category)+1);
             }else{
-                mp.set(element.category , 0);
+                mp.set(element.category , 1);
             }
         }
     })
@@ -19,8 +19,8 @@ const pieChartData = async(month) => {
     let arr = [];
     mp.forEach((value,key) => {
         arr.push({
-            key,
-            value
+            Category : key,
+            TotalItems :value
         })
     })
 

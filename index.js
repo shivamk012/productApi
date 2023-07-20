@@ -1,6 +1,6 @@
 const express = require('express');
-const { initialiseApp } = require('./Promises/initialise');
 const axios = require('axios');
+const { initialiseApp } = require('./Promises/initialise');
 const {statsPromise} = require('./Promises/productStat');
 const {barChartData} = require('./Promises/barChart');
 const {pieChartData} = require('./Promises/pieChart');
@@ -8,9 +8,12 @@ const {pieChartData} = require('./Promises/pieChart');
 const app = express();
 
 app.get('/initialiseApp' , (req , res) => {
+
     initialiseApp.then((result) => {
+        //result contains data from external api
+
         const processedData = result.data.map((obj , index) => {
-            const month = obj.dateOfSale.slice(5,7); // getting mongth of product
+            const month = obj.dateOfSale.slice(5,7); // date format -> yyyy-mm-dd 
             return {
                  id : index , category : obj.category , month : month , price : obj.price , sold : obj.sold
             };

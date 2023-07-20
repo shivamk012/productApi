@@ -18,7 +18,7 @@ const barChartData = async(month) => {
         let upperLimit = (index === 9 ? "above" : (index+1)*100)
         return {
             range : `${lowLimit} - ${upperLimit}`,
-            count: element
+            numberofItems: element
         }
     })
 
